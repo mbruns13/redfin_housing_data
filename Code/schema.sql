@@ -1,7 +1,7 @@
 CREATE TABLE county_data(
 	period_end DATE,
-    region VARCHAR,
     parent_metro_region VARCHAR,
+    county VARCHAR,
     state VARCHAR,
     property_type VARCHAR,
     inventory INTEGER,
