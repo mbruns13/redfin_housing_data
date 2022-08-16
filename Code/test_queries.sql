@@ -1,3 +1,16 @@
 SELECT * FROM county_data;
 SELECT * FROM pop_data;
 
+DROP VIEW IF EXISTS data_by_year;
+CREATE VIEW data_by_year AS
+SELECT year, state, county, property_type, AVG(inventory) AS "avg_inventory", SUM(homes_sold) AS "total_homes_sold", AVG(median_sale_price) AS "avg_median_sale_price", AVG(median_ppsf) AS "avg_median_ppsf" 
+FROM county_data
+GROUP BY year, state, county, property_type;
+
+
+DROP VIEW IF EXISTS merged_view;
+CREATE VIEW merged_view AS
+SELECT year, d.state, d.county, p.pop_estimate_2019, p.pop_estimate_2020, p.pop_estimate_2021, property_type, "avg_inventory", "total_homes_sold", "avg_median_sale_price", "avg_median_ppsf" 
+FROM data_by_year as d
+INNER JOIN pop_data as p
+ON d.county = p.county;
