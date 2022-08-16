@@ -8,6 +8,14 @@ FROM county_data
 GROUP BY year, state, county, property_type;
 
 
+DROP VIEW IF EXISTS merged_view;
+CREATE VIEW merged_view AS
+SELECT year, d.state, d.county, p.pop_estimate_2019, p.pop_estimate_2020, p.pop_estimate_2021, property_type, "avg_inventory", "total_homes_sold", "avg_median_sale_price", "avg_median_ppsf" 
+FROM data_by_year as d
+INNER JOIN pop_data as p
+ON d.county = p.county;
+
+
 
 -- SELECT property_type, COUNT(property_type)
 -- FROM county_data
