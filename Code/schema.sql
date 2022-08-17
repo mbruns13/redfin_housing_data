@@ -1,5 +1,6 @@
 CREATE TABLE county_data(
-	period_end DATE,
+	id SERIAL PRIMARY KEY,
+    period_end DATE,
     year INTEGER,
     county VARCHAR,
     state VARCHAR,
@@ -11,7 +12,8 @@ CREATE TABLE county_data(
 );
 
 CREATE TABLE pop_data(
-	county VARCHAR,
+	id SERIAL PRIMARY KEY,
+    county VARCHAR,
     state VARCHAR,
     pop_estimate_2019 INTEGER,
     pop_estimate_2020 INTEGER,

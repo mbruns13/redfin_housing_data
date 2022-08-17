@@ -17,7 +17,6 @@ url = f'{config.user}:{config.password}@{config.hostname}:{config.port}/housing_
 # engine = create_engine("sqlite:///housing.sqlite")
 
 engine = create_engine(f'postgresql://{url}')
-print(engine.table_names())
 
 # reflect an existing database into a new model
 Base = automap_base()
@@ -25,7 +24,7 @@ Base = automap_base()
 Base.prepare(engine, reflect=True)
 
 # Save reference to the tables
-# County = Base.classes.county_data
+County = Base.classes.county_data
 # Pop = Base.classes.pop_data
 
 #################################################
