@@ -7,8 +7,8 @@ CREATE TABLE county_data(
     property_type VARCHAR,
     inventory INTEGER,
     homes_sold INTEGER,
-    median_sale_price DECIMAL,
-    median_ppsf DECIMAL
+    median_sale_price REAL,
+    median_ppsf REAL
 );
 
 CREATE TABLE pop_data(

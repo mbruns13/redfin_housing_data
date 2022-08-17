@@ -1,5 +1,6 @@
 import config
 import os
+from decimal import Decimal
 import numpy as np
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
@@ -8,6 +9,10 @@ from sqlalchemy import create_engine, func
 
 from flask import Flask, render_template, redirect, jsonify
 
+def default(obj):
+    if isinstance(obj, Decimal):
+        return str(obj)
+    raise TypeError("Object of type '%s' is not JSON serializable" % type(obj).__name__)
 
 #################################################
 # Database Setup
@@ -63,7 +68,7 @@ def index():
     return (
         f"Available Routes:<br/>"
         f"/api/v1.0/counties<br/>"
-        f"/api/v1.0/states"
+        f"/api/v1.0/grouped_data"
     )
 
 @app.route("/api/v1.0/counties")
@@ -84,6 +89,34 @@ def counties():
 
 
 
+@app.route("/api/v1.0/grouped_data")
+def grouped():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    """Return grouped data"""
+    # Query all counties
+    results = session.query(County.year, County.state, County.county, County.property_type, func.avg(County.inventory), func.sum(County.homes_sold), func.avg(County.median_sale_price), func.avg(County.median_ppsf)).group_by(County.year, County.state, County.county, County.property_type).all()
+
+    session.close()
+    
+    # Create a dictionary from the row data and append to a list of all_passengers
+    all_data = []
+
+    for year, state, county, property_type, inventory, homes_sold, median_sale_price, median_ppsf in results:
+        data_dict = {}
+        data_dict["year"] = year
+        data_dict["state"] = state
+        data_dict["county"] = county
+        data_dict["property_type"] = property_type
+        data_dict["avg_inventory"] = str(inventory)
+        data_dict["total_homes_sold"] = str(homes_sold)
+        data_dict["avg_median_sale_price"] = str(median_sale_price)
+        data_dict["avg_median_ppsf"] = str(median_ppsf)
+
+        all_data.append(data_dict)
+
+    return jsonify(all_data)
 
 # Define main behavior
 if __name__ == "__main__":
