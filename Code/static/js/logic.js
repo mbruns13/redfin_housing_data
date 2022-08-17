@@ -1,4 +1,4 @@
-url_geojson = "https://raw.githubusercontent.com/mbruns13/project_3_housing_data/Molly/Code/Resources/cb_2021_us_county_5m.geojson"
+url_geojson = "https://raw.githubusercontent.com/mbruns13/project_3_housing_data/Molly/Code/assets/cb_2021_us_county_5m.geojson"
 
 function createMap(data) {
     // Create the tile layer that will be the background of our map.
@@ -44,7 +44,7 @@ function createMap(data) {
 
 
 
-d3.json("https://raw.githubusercontent.com/mbruns13/project_3_housing_data/Molly/Code/Resources/cb_2021_us_county_5m.geojson").then(function(data) {
+d3.json(url_geojson).then(function(data) {
     console.log(data);
     //     // console.log(data.features[0])
 
