@@ -1,3 +1,6 @@
+import config
+import os
+import numpy as np
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
@@ -6,19 +9,24 @@ from sqlalchemy import create_engine, func
 from flask import Flask, render_template, redirect, jsonify
 
 
-
 #################################################
 # Database Setup
 #################################################
-engine = create_engine("sqlite:///housing.sqlite")
+url = f'{config.user}:{config.password}@{config.hostname}:{config.port}/housing_db'
+
+# engine = create_engine("sqlite:///housing.sqlite")
+
+engine = create_engine(f'postgresql://{url}')
+print(engine.table_names())
 
 # reflect an existing database into a new model
 Base = automap_base()
 # reflect the tables
 Base.prepare(engine, reflect=True)
 
-# Save reference to the table
-County = Base.classes.county_data
+# Save reference to the tables
+# County = Base.classes.county_data
+# Pop = Base.classes.pop_data
 
 #################################################
 # Flask Setup
@@ -52,9 +60,28 @@ app = Flask(__name__)
 @app.route("/")
 # index = homepage of application
 def index():
-    return "Hello, world!"
+    """List available api routes."""
+    return (
+        f"Available Routes:<br/>"
+        f"/api/v1.0/counties<br/>"
+        f"/api/v1.0/states"
+    )
 
+@app.route("/api/v1.0/counties")
+def counties():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
 
+    """Return a list of all county names"""
+    # Query all counties
+    results = session.query(County.county).distinct()
+
+    session.close()
+
+    # Convert list of tuples into a normal list
+    all_counties = list(np.ravel(results))
+
+    return jsonify(all_counties)
 
 
 
