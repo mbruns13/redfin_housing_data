@@ -15,7 +15,9 @@ FROM data_by_year as d
 INNER JOIN pop_data as p
 ON d.county = p.county;
 
-
+SELECT * 
+FROM merged_view
+WHERE property_type = 'All Residential';
 
 -- SELECT property_type, COUNT(property_type)
 -- FROM county_data
