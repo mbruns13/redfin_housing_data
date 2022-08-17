@@ -25,7 +25,7 @@ Base.prepare(engine, reflect=True)
 
 # Save reference to the tables
 County = Base.classes.county_data
-# Pop = Base.classes.pop_data
+Pop = Base.classes.pop_data
 
 #################################################
 # Flask Setup
@@ -73,10 +73,10 @@ def counties():
 
     """Return a list of all county names"""
     # Query all counties
-    results = session.query(County.county).distinct()
+    results = session.query(County.county).distinct().all()
 
     session.close()
-
+    
     # Convert list of tuples into a normal list
     all_counties = list(np.ravel(results))
 
