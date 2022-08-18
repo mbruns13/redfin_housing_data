@@ -35,6 +35,7 @@ def index():
         f"Available Routes:<br/>"
         f"/api/v1.0/counties<br/>"
         f"/api/v1.0/grouped_data<br/>"
+        f"/api/v1.0/merged_data<br/>"
         f"/api/v1.0/housing_data_2019<br/>"
         f"/api/v1.0/housing_data_2020<br/>"
         f"/api/v1.0/housing_data_2021<br/>"
@@ -86,6 +87,42 @@ def grouped():
         all_housing_data.append(data_dict)
 
     return jsonify(all_housing_data)
+
+@app.route("/api/v1.0/merged_data")
+def merged():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    """Return merged data (For now, All Residential property types only)"""
+    # Query all counties
+    results = session.query(County.year, County.state, County.county, func.avg(County.inventory), func.sum(County.homes_sold), func.avg(County.median_sale_price), func.avg(County.median_ppsf), Pop.pop_estimate_2019, Pop.pop_estimate_2020, Pop.pop_estimate_2021).group_by(County.year, County.state, County.county,Pop.pop_estimate_2019, Pop.pop_estimate_2020, Pop.pop_estimate_2021).filter(County.property_type == "All Residential").join(Pop, (Pop.state == County.state) & (Pop.county == County.county)).all()
+    session.close()
+    
+    # Create a dictionary from the row data and append to a list of all_data
+    merged_data = []
+
+    for year, state, county, inventory, homes_sold, median_sale_price, median_ppsf, pop_estimate_2019, pop_estimate_2020, pop_estimate_2021 in results:
+        merged_dict = {}
+        merged_dict["year"] = year
+        merged_dict["state"] = state
+        merged_dict["county"] = county
+        merged_dict["avg_inventory"] = str(inventory)
+        merged_dict["total_homes_sold"] = str(homes_sold)
+        merged_dict["avg_median_sale_price"] = str(median_sale_price)
+        merged_dict["avg_median_ppsf"] = str(median_ppsf)
+        merged_dict["pop_estimate_2019"] = pop_estimate_2019
+        merged_dict["pop_estimate_2020"] = pop_estimate_2020
+        merged_dict["pop_estimate_2021"] = pop_estimate_2021
+
+
+        merged_data.append(merged_dict)
+
+    return jsonify(merged_data)
+
+
+
+
+
 
 
 @app.route("/api/v1.0/housing_data_2019")
