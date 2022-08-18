@@ -34,10 +34,11 @@ def index():
     return (
         f"Available Routes:<br/>"
         f"/api/v1.0/counties<br/>"
-        f"/api/v1.0/grouped_data"
-        f"/api/v1.0/housing_data_2019"
-        f"/api/v1.0/housing_data_2020"
-        f"/api/v1.0/housing_data_2021"
+        f"/api/v1.0/grouped_data<br/>"
+        f"/api/v1.0/housing_data_2019<br/>"
+        f"/api/v1.0/housing_data_2020<br/>"
+        f"/api/v1.0/housing_data_2021<br/>"
+        f"/api/v1.0/county_data_deltas"
     )
 
 @app.route("/api/v1.0/counties")
@@ -92,7 +93,7 @@ def county2019():
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
-    """Return merged data"""
+    """Return 2019 data"""
     # Query all counties
     results = session.query(County.year, County.state, County.county, County.property_type, func.avg(County.inventory), func.sum(County.homes_sold), func.avg(County.median_sale_price), func.avg(County.median_ppsf)).group_by(County.year, County.state, County.county, County.property_type).filter(County.year == '2019').all()
 
@@ -122,7 +123,7 @@ def county2020():
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
-    """Return merged data"""
+    """Return 2020 data"""
     # Query all counties
     results = session.query(County.year, County.state, County.county, County.property_type, func.avg(County.inventory), func.sum(County.homes_sold), func.avg(County.median_sale_price), func.avg(County.median_ppsf)).group_by(County.year, County.state, County.county, County.property_type).filter(County.year == '2020').all()
 
@@ -152,7 +153,7 @@ def county2021():
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
-    """Return merged data"""
+    """Return 2021 data"""
     # Query all counties
     results = session.query(County.year, County.state, County.county, County.property_type, func.avg(County.inventory), func.sum(County.homes_sold), func.avg(County.median_sale_price), func.avg(County.median_ppsf)).group_by(County.year, County.state, County.county, County.property_type).filter(County.year == '2021').all()
 
@@ -173,8 +174,8 @@ def county2021():
         dict2021["avg_median_ppsf"] = str(median_ppsf)
 
         housing_data_2021.append(dict2021)
-
     return jsonify(housing_data_2021)
+
 
 
 
