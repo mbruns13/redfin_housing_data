@@ -14,12 +14,17 @@ CREATE VIEW merged_view AS
 SELECT year, d.state, d.county, p.pop_estimate_2019, p.pop_estimate_2020, p.pop_estimate_2021, property_type, "avg_inventory", "total_homes_sold", "avg_median_sale_price", "avg_median_ppsf" 
 FROM data_by_year as d
 INNER JOIN pop_data as p
-ON d.county = p.county;
+ON d.county = p.county
+AND d.state = p.state;
 SELECT * FROM merged_view;
 
-SELECT * 
-FROM merged_view
+SELECT year, d.state, d.county, p.pop_estimate_2019, p.pop_estimate_2020, p.pop_estimate_2021, property_type, "avg_inventory", "total_homes_sold", "avg_median_sale_price", "avg_median_ppsf" 
+FROM data_by_year as d
+INNER JOIN pop_data as p
+ON d.county = p.county
+AND d.state = p.state
 WHERE property_type = 'All Residential';
+
 
 SELECT year, state, county, AVG(median_sale_price)
 FROM county_data
