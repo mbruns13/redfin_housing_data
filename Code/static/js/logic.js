@@ -19,7 +19,15 @@ var geojson;
 d3.json(geoData).then(function(data) {
     console.log(data.features[1]);
 
-    L.geoJson(data).addTo(myMap);
+    L.geoJson(data, {
+        style: {
+            weight: 1,
+            opacity: 1,
+            color: 'none',
+            // dashArray: '3',
+            fillOpacity: 0.6
+        }
+    }).addTo(myMap);
 
     function getColor(d) {
         return d > 1000 ? '#800026' :
