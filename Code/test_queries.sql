@@ -17,10 +17,15 @@ INNER JOIN pop_data as p
 ON d.county = p.county;
 SELECT * FROM merged_view;
 
-
 SELECT * 
 FROM merged_view
 WHERE property_type = 'All Residential';
+
+SELECT year, state, county, AVG(median_sale_price)
+FROM county_data
+WHERE property_type = 'All Residential'
+GROUP BY year, state, county
+ORDER BY year, state, county;
 
 -- SELECT property_type, COUNT(property_type)
 -- FROM county_data
