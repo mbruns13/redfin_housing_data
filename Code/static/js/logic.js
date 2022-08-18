@@ -12,6 +12,7 @@ var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(myMap);
 
+
 var geoData = "https://raw.githubusercontent.com/mbruns13/project_3_housing_data/main/Code/Resources/updated.geojson"
 var geojson;
 
@@ -85,15 +86,10 @@ d3.json(geoData).then(function(data) {
 
     // method that we will use to update the control based on feature properties passed
     info.update = function(props) {
-        // if (props.yoy_2020_diff) {
         this._div.innerHTML = '<h4>Average Median Sale Price - All Residential</h4>' + (props ?
             '<b>' + props.NAMELSAD + ', ' + props.STATE_NAME + '</b><br />Change in average median sale price from 2019 to 2020: $' + props.yoy_2020_diff + ' ' :
             'Hover over a state');
-        // } else {
-        //     this._div.innerHTML = '<h4>Average Median Sale Price - All Residential</h4>' + (props ?
-        //         '<b>' + props.NAMELSAD + ', ' + props.STATE_NAME + '</b><br />Change in average median sale price from 2019 to 2020 could not be calculated.' :
-        //         'Hover over a state');
-        // }
+
     };
 
     info.addTo(myMap);
