@@ -11,9 +11,6 @@ from flask import Flask, render_template, redirect, jsonify
 # Database Setup
 #################################################
 url = f'{config.user}:{config.password}@{config.hostname}:{config.port}/housing_db'
-
-# engine = create_engine("sqlite:///housing.sqlite")
-
 engine = create_engine(f'postgresql://{url}')
 
 # reflect an existing database into a new model
