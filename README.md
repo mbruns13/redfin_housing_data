@@ -12,7 +12,7 @@
 
 * Housing Data Source: Redfin Data Center obtained via kaggle.com. This residential real estate data set was created by Redfin, an online real estate brokerage. Published on January 9th, 2022, this data summarize the monthly housing market for every State and County served by Redfin in the US from 2012 to 2021. Redfin aggregated this data across multiple listing services and has been gracious enough to include property type in their reporting. Please properly cite and link to Redfin if you end up using this data for your research or project.
 
-* Population Data Source: U.S. Census 2010-2019 Data for Population, Population Change, and Estimated Components of Population Change from <a href="https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html#par_textimage_1873399417">U.S. Census website</a>.
+* Population Data Source: <a href="https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html#par_textimage_1873399417">U.S. Census 2010-2019 Data</a> for Population, Population Change, and Estimated Components of Population Change from the U.S. Census website.
 
 ### Database Type
 * pgAdmin
