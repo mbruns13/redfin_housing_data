@@ -19,6 +19,7 @@ var geojson;
 d3.json(geoData).then(function(data) {
     console.log(data.features[1]);
 
+
     L.geoJson(data, {
         style: {
             weight: 1,
@@ -30,14 +31,15 @@ d3.json(geoData).then(function(data) {
     }).addTo(myMap);
 
     function getColor(d) {
-        return d > 1000 ? '#800026' :
-            d > 500 ? '#BD0026' :
-            d > 200 ? '#E31A1C' :
-            d > 100 ? '#FC4E2A' :
-            d > 50 ? '#FD8D3C' :
-            d > 20 ? '#FEB24C' :
-            d > 10 ? '#FED976' :
-            'none';
+        return d > 1561135 ? '#07aa0f' :
+            d > 22476 ? '#7ac86a' :
+            d > 125 ? '#bfe4b3' :
+            // d > 0 ? '#c0eabe' :
+            // d = 0 ? '#ffffff' :
+            d > -71 ? '#ffffff' :
+            d > -18763 ? '#ff795a' :
+            d > -1451000 ? '#f00606' :
+            'grey';
 
     }
 
@@ -107,8 +109,9 @@ d3.json(geoData).then(function(data) {
     legend.onAdd = function(map) {
 
         var div = L.DomUtil.create('div', 'info legend'),
-            grades = [0, 10, 20, 50, 100, 200, 500, 1000],
-            labels = [];
+            // grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+            grades = [NaN, -1451000, -18763, -71, 125, 22476, 1561134]
+        labels = [];
 
         // loop through our density intervals and generate a label with a colored square for each interval
         for (var i = 0; i < grades.length; i++) {
