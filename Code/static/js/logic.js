@@ -96,7 +96,7 @@ d3.json(geoData).then(function(data) {
     info.update = function(props) {
         this._div.innerHTML = '<h4>Average Median Sale Price - All Residential</h4>' + (props ?
             '<b>' + props.NAMELSAD + ', ' + props.STATE_NAME + '</b><br />Change in average median sale price from 2019 to 2020: $' + props.yoy_2020_diff + ' ' :
-            'Hover over a state');
+            'Hover over a county');
 
     };
 
