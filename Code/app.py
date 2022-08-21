@@ -4,8 +4,9 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
+from flask_cors import CORS
 
-from flask import Flask, render_template, redirect, jsonify
+from flask import Flask, render_template, redirect, jsonify, request
 
 #################################################
 # Database Setup
@@ -26,6 +27,7 @@ Pop = Base.classes.pop_data
 # Flask Setup
 #################################################
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 # index = homepage of application
@@ -41,6 +43,7 @@ def index():
         f"/api/v1.0/housing_data_2021<br/>"
         f"/api/v1.0/county_data_deltas"
     )
+    #return render_template("index.html")
 
 @app.route("/api/v1.0/counties")
 def counties():
@@ -88,7 +91,7 @@ def grouped():
 
     return jsonify(all_housing_data)
 
-@app.route("/api/v1.0/merged_data")
+@app.route("/api/v1.0/merged_data", methods=['GET', 'POST'])
 def merged():
     # Create our session (link) from Python to the DB
     session = Session(engine)
@@ -117,7 +120,14 @@ def merged():
 
         merged_data.append(merged_dict)
 
-    return jsonify(merged_data)
+    if request.method == 'GET':
+        return jsonify(merged_data)  # serialize and use JSON headers
+    # POST request
+    if request.method == 'POST':
+        print(request.get_json())  # parse as JSON
+        return 'Sucesss', 200
+
+    return render_template("test_chart.html", merged_data=merged_data)
 
 
 
@@ -212,6 +222,7 @@ def county2021():
 
         housing_data_2021.append(dict2021)
     return jsonify(housing_data_2021)
+   
 
 
 
