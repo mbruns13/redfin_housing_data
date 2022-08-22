@@ -4,6 +4,8 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
+from flask_cors import CORS, cross_origin
+
 
 from flask import Flask, render_template, redirect, jsonify
 
@@ -28,6 +30,7 @@ Pop = Base.classes.pop_data
 app = Flask(__name__)
 
 @app.route("/")
+@cross_origin(origin='*')
 # index = homepage of application
 def index():
     """List available api routes."""
@@ -41,8 +44,11 @@ def index():
         f"/api/v1.0/housing_data_2021<br/>"
         f"/api/v1.0/county_data_deltas"
     )
+        #return render_template("index.html")
+
 
 @app.route("/api/v1.0/counties")
+@cross_origin(origin='*')
 def counties():
     # Create our session (link) from Python to the DB
     session = Session(engine)
@@ -60,6 +66,7 @@ def counties():
 
 
 @app.route("/api/v1.0/grouped_data")
+@cross_origin(origin='*')
 def grouped():
     # Create our session (link) from Python to the DB
     session = Session(engine)
@@ -88,7 +95,8 @@ def grouped():
 
     return jsonify(all_housing_data)
 
-@app.route("/api/v1.0/merged_data")
+@app.route("/api/v1.0/merged_data", methods=['GET', 'POST'])
+@cross_origin(origin='*')
 def merged():
     # Create our session (link) from Python to the DB
     session = Session(engine)
@@ -117,15 +125,18 @@ def merged():
 
         merged_data.append(merged_dict)
 
-    return jsonify(merged_data)
+        if request.method == 'GET':
+            return jsonify(merged_data)  # serialize and use JSON headers
+        # POST request
+        if request.method == 'POST':
+            print(request.get_json())  # parse as JSON
+            return 'Sucesss', 200
 
-
-
-
-
-
+    return render_template("test_chart.html", merged_data=merged_data)
+    # return jsonify(merged_data)
 
 @app.route("/api/v1.0/housing_data_2019")
+@cross_origin(origin='*')
 def county2019():
     # Create our session (link) from Python to the DB
     session = Session(engine)
@@ -156,6 +167,7 @@ def county2019():
 
 
 @app.route("/api/v1.0/housing_data_2020")
+@cross_origin(origin='*')
 def county2020():
     # Create our session (link) from Python to the DB
     session = Session(engine)
@@ -186,6 +198,7 @@ def county2020():
 
 
 @app.route("/api/v1.0/housing_data_2021")
+@cross_origin(origin='*')
 def county2021():
     # Create our session (link) from Python to the DB
     session = Session(engine)
@@ -212,7 +225,6 @@ def county2021():
 
         housing_data_2021.append(dict2021)
     return jsonify(housing_data_2021)
-
 
 
 
