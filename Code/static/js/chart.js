@@ -71,11 +71,14 @@ async function makeChart() {
             datasets: [{
                 type: 'bar',
                 label: 'Homes Sold',
-                data: d.sale_prices_2019
+                data: d.sale_prices_2019,
+                borderColor: 'rgb(255, 99, 132)',
+                backgroundColor: 'rgba(255, 99, 132)'
             }, {
                 type: 'line',
                 label: 'Population Estimates 2019',
                 data: d.homes_sold_2019,
+                // borderColor: 'rgb(54, 162, 235)'
             }],
             labels: d.states_2019
         },
