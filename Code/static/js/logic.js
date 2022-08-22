@@ -42,7 +42,7 @@ d3.json(geoData).then(function(data) {
             d > -71 ? '#ffffff' :
             d > -18763 ? '#ff795a' :
             d > -1451000 ? '#f00606' :
-            'grey';
+            '#E9E9E9';
 
     }
 
@@ -116,8 +116,13 @@ d3.json(geoData).then(function(data) {
             grades = [NaN, -1451000, -18763, -71, 125, 22476, 1561134]
         labels = [];
 
+        // generate a label for grey / undefined counties on the map
+        div.innerHTML =
+            '<i style="background:' + getColor(grades[1]) + '"></i> ' +
+            'Undefined' + '<br>';
         // loop through our density intervals and generate a label with a colored square for each interval
-        for (var i = 0; i < grades.length; i++) {
+
+        for (var i = 1; i < grades.length; i++) {
             div.innerHTML +=
                 '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
                 grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
