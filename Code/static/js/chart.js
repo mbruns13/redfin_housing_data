@@ -65,24 +65,20 @@ makeChart();
 
 async function makeChart() {
     const d = await getData();
-
-    const data = {
-        labels: d.states_2019,
-        datasets: [{
-            label: 'Population Estimates by State - 2019',
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgb(255, 99, 132)',
-            data: d.population_est_2019
-        }]
-    };
-
-    const config = {
-        type: 'line',
-        data: data,
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const mixedChart = new Chart(ctx, {
+        data: {
+            datasets: [{
+                type: 'bar',
+                label: 'Homes Sold',
+                data: d.sale_prices_2019
+            }, {
+                type: 'line',
+                label: 'Population Estimates 2019',
+                data: d.homes_sold_2019,
+            }],
+            labels: d.states_2019
+        },
         options: {}
-    };
-
-    const myChart = new Chart(
-        document.getElementById('myChart'),
-        config);
+    });
 }
