@@ -66,12 +66,10 @@ makeChart();
 async function makeChart() {
     const d = await getData();
 
-    const labels = d.states_2019
-
     const data = {
-        labels: labels,
+        labels: d.states_2019,
         datasets: [{
-            label: 'My First dataset',
+            label: 'Population Estimates by State - 2019',
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: d.population_est_2019
