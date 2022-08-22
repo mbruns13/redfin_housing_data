@@ -7,7 +7,7 @@ from sqlalchemy import create_engine, func
 from flask_cors import CORS, cross_origin
 
 
-from flask import Flask, render_template, redirect, jsonify
+from flask import Flask, render_template, redirect, jsonify, request
 
 #################################################
 # Database Setup
