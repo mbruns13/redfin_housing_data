@@ -4,8 +4,9 @@ import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, func
+from flask_cors import CORS
 
-from flask import Flask, render_template, redirect, jsonify
+from flask import Flask, render_template, redirect, jsonify, request
 
 #################################################
 # Database Setup
@@ -26,6 +27,7 @@ Pop = Base.classes.pop_data
 # Flask Setup
 #################################################
 app = Flask(__name__)
+CORS(app)
 
 @app.route("/")
 # index = homepage of application
@@ -41,6 +43,7 @@ def index():
         f"/api/v1.0/housing_data_2021<br/>"
         f"/api/v1.0/county_data_deltas"
     )
+    #return render_template("index.html")
 
 @app.route("/api/v1.0/counties")
 def counties():
@@ -88,7 +91,7 @@ def grouped():
 
     return jsonify(all_housing_data)
 
-@app.route("/api/v1.0/merged_data")
+@app.route("/api/v1.0/merged_data", methods=['GET', 'POST'])
 def merged():
     # Create our session (link) from Python to the DB
     session = Session(engine)
@@ -117,10 +120,52 @@ def merged():
 
         merged_data.append(merged_dict)
 
-    return jsonify(merged_data)
+    if request.method == 'GET':
+        return jsonify(merged_data)  # serialize and use JSON headers
+    # POST request
+    if request.method == 'POST':
+        print(request.get_json())  # parse as JSON
+        return 'Sucesss', 200
+
+    return render_template("test_chart.html", merged_data=merged_data)
 
 
+@app.route("/api/v1.0/state_merged_data", methods=['GET', 'POST'])
+def state_merged():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
 
+    """Return merged data (For now, All Residential property types only)"""
+    # Query all counties
+    results = session.query(County.year, County.state, func.avg(County.inventory), func.sum(County.homes_sold), func.avg(County.median_sale_price), func.avg(County.median_ppsf), func.sum(Pop.pop_estimate_2019), func.sum(Pop.pop_estimate_2020), func.sum(Pop.pop_estimate_2021)).group_by(County.year, County.state).filter(County.property_type == "All Residential").join(Pop, (Pop.state == County.state)).all()
+    session.close()
+    
+    # Create a dictionary from the row data and append to a list of all_data
+    state_merged_data = []
+
+    for year, state, inventory, homes_sold, median_sale_price, median_ppsf, pop_estimate_2019, pop_estimate_2020, pop_estimate_2021 in results:
+        state_merged_dict = {}
+        state_merged_dict["year"] = year
+        state_merged_dict["state"] = state
+        state_merged_dict["avg_inventory"] = str(inventory)
+        state_merged_dict["total_homes_sold"] = str(homes_sold)
+        state_merged_dict["avg_median_sale_price"] = str(median_sale_price)
+        state_merged_dict["avg_median_ppsf"] = str(median_ppsf)
+        state_merged_dict["pop_estimate_2019"] = pop_estimate_2019
+        state_merged_dict["pop_estimate_2020"] = pop_estimate_2020
+        state_merged_dict["pop_estimate_2021"] = pop_estimate_2021
+
+
+        state_merged_data.append(state_merged_dict)
+
+    if request.method == 'GET':
+        return jsonify(state_merged_data)  # serialize and use JSON headers
+    # POST request
+    if request.method == 'POST':
+        print(request.get_json())  # parse as JSON
+        return 'Sucesss', 200
+
+    return render_template("test_chart.html", state_merged_data=state_merged_data)
 
 
 
@@ -212,6 +257,7 @@ def county2021():
 
         housing_data_2021.append(dict2021)
     return jsonify(housing_data_2021)
+   
 
 
 
