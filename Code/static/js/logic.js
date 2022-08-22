@@ -37,8 +37,6 @@ d3.json(geoData).then(function(data) {
         return d > 1561134 ? '#23b029' :
             d > 22476 ? '#80cc74' :
             d > 125 ? '#c1e6b8' :
-            // d > 0 ? '#c0eabe' :
-            // d = 0 ? '#ffffff' :
             d > -71 ? '#ffffff' :
             d > -18763 ? '#ff795a' :
             d > -1451000 ? '#f00606' :
@@ -137,7 +135,5 @@ d3.json(geoData).then(function(data) {
         style: style,
         onEachFeature: onEachFeature
     }).addTo(myMap);
-
-
 
 });
