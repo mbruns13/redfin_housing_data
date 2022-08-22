@@ -52,7 +52,7 @@
           <li><a href="index.html#about">About</a></li>
           <li><a href="index.html#team">Team</a></li>
           <li><a href="dataset.html">Dataset</a></li>
-          <li><a href="heatmap.html">Heatmap</a></li>
+          <li><a href="bubble.html">Bubble Chart</a></li>
           <li><a href="chloropleth.html">Chloropleth</a></li>
           <li class="dropdown"><a href="#"><span>Visualizations</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
@@ -83,7 +83,7 @@
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
               <h2>Dataset</h2>
-              <p>This is the Redfin data table</p>
+              <p>This is the cleaned Redfin data table</p>
             </div>
           </div>
         </div>
@@ -98,33 +98,26 @@
       </nav>
     </div><!-- End Breadcrumbs -->
 
-<!-- This calls in the CSV dataset -->
-    <section id="services" class="services sections-bg">
-      <div class="container" data-aos="fade-up">
-        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
-          <div id="dataset" class="col-lg-12 col-md-6">
-            <div id="CSVTable">
-              <script src="http://d3js.org/d3.v3.min.js"></script>
-              <script src="d3.min.js?v=3.2.8"></script>
-              <script type="text/javascript" charset="utf-8">
-                d3.text(src="assets/test_images/cities.csv", function(data) {
-                  var parsedCSV = d3.csv.parseRows(data);
-                  var container = d3.select("body")
-                    .append("table")
-                      .selectAll("tr")
-                        .data(parsedCSV).enter()
-                        .append("tr")
-                      .selectAll("td")
-                        .data(function(d) { return d; }).enter()
-                        .append("td")
-                        .text(function(d) { return d; });
-                        });
-              </script>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section><!-- End of Dataset Section -->
+    <!-- This calls in the CSV dataset -->
+    <div id="CSVTable">
+      <script src="http://d3js.org/d3.v3.min.js"></script>
+      <script src="d3.min.js?v=3.2.8"></script>
+      <script type="text/javascript" charset="utf-8">
+        d3.text(src="../Resources/county_deltas.csv", function(data) {
+          var parsedCSV = d3.csv.parseRows(data);
+          var container = d3.select("body")
+            .append("table")
+              .selectAll("tr")
+                .data(parsedCSV).enter()
+                .append("tr")
+              .selectAll("td")
+                .data(function(d) { return d; }).enter()
+                .append("td")
+                .text(function(d) { return d; });
+                });
+      </script>
+    </div>
+      <!--End of Dataset Section -->
   </main>
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
@@ -142,6 +135,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/dataset.js"></script>
 
 </body>
 

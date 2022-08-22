@@ -45,6 +45,9 @@
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
 
+  <!-- D3 Libraries  -->
+  <script src="https://d3js.org/d3.v5.min.js"> </script>
+
 
 </head>
 
@@ -64,7 +67,7 @@
           <li><a href="index.html#about">About</a></li>
           <li><a href="index.html#team">Team</a></li>
           <li><a href="dataset.html">Dataset</a></li>
-          <li><a href="heatmap.html">Heatmap</a></li>
+          <li><a href="bubble.html">Bubble Chart</a></li>
           <li><a href="chloropleth.html">Chloropleth</a></li>
           <li class="dropdown"><a href="#"><span>Visualizations</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
@@ -94,8 +97,8 @@
         <div class="container position-relative">
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
-              <h2>Heatmap</h2>
-              <p>This is a heatmap of our data</p>
+              <h2>Bubble Chart</h2>
+              <p>This is a bubble chart of our data</p>
             </div>
           </div>
         </div>
@@ -104,7 +107,7 @@
         <div class="container">
           <ol>
             <li><a href="index.html">Home</a></li>
-            <li>Heatmap</li>
+            <li>Bubblechart</li>
           </ol>
         </div>
       </nav>
@@ -114,11 +117,17 @@
 
     <!-- Heatmap -->
     <row>
+      <h5>Year:</h5>
+      <select id="selDataset" onchange="optionChanged(this.value)">
+        <option value='2019'>2019</option>
+        <option value='2020'>2020</option>
+        <option value='2021'>2021</option>
+      </select>
       <center>
-    <!-- The div where we'll insert our map -->
-          <div id="map"></div>
+    <!-- The div where we'll insert our bubble chart -->
+          <div id="bubble"></div>
       </center>
-      </row>
+    </row>
   
 
     <!-- End of heatmap -->
@@ -174,7 +183,10 @@
   <script src="assets/js/main.js"></script>
 
   <!-- Leaflet.js file -->
-  <script type="text/javascript" src="assets/js/heatmap.js"></script>
+  <script type="text/javascript" src="assets/js/bubble.js"></script>
+
+  <!-- Plotly Libraries -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
 </body>
 

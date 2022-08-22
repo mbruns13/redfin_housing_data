@@ -34,6 +34,12 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+
+  <!-- D3 Libraries  -->
+  <script src="https://d3js.org/d3.v5.min.js"> </script>
+  <!-- Plotly Libraries -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
 </head>
 
 <body>
@@ -52,7 +58,7 @@
           <li><a href="index.html#about">About</a></li>
           <li><a href="index.html#team">Team</a></li>
           <li><a href="dataset.html">Dataset</a></li>
-          <li><a href="heatmap.html">Heatmap</a></li>
+          <li><a href="bubble.html">Bubble Chart</a></li>
           <li><a href="chloropleth.html">Chloropleth</a></li>
           <li class="dropdown"><a href="#"><span>Visualizations</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
@@ -100,14 +106,18 @@
     <!-- End Breadcrumbs -->
 
 
-    <!-- Heatmap -->
-    <section id="call-to-action" class="call-to-action">
-      <center>
-      <img src="assets/test_images/Fig1.png">
-      </center>
-    </section>
+    <!-- =========== Geomap ========== -->
+    <row>
+        <center>
+      <!-- The div where we'll insert our map -->
+            <div id="graph"></div>
 
-    <!-- End of heatmap -->
+
+            <p>Hello</p>
+        </center>
+    </row>
+    
+    <!-- ========== End of Geomap ========== -->
 
 
   </main>
@@ -158,6 +168,8 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <!-- Graphs.js file link -->
+  <script src="assets/js/graphs.js"></script>
 
 </body>
 
