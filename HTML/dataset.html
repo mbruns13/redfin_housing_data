@@ -54,16 +54,7 @@
           <li><a href="dataset.html">Dataset</a></li>
           <li><a href="bubble.html">Bubble Chart</a></li>
           <li><a href="chloropleth.html">Chloropleth</a></li>
-          <li class="dropdown"><a href="#"><span>Visualizations</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="graphs.html">Graph 1</a></li>
-              <li><a href="graphs.html">Graph 2</a></li>
-              <li><a href="graphs.html">Graph 3</a></li>
-              <li><a href="graphs.html">Graph 4</a></li>
-              <li><a href="graphs.html">Graph 5</a></li>
-              <li><a href="graphs.html">Graph 6</a></li>
-            </ul>
-          </li>
+          <li><a href="graphs.html">Bar Chart</a></li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -83,7 +74,7 @@
           <div class="row d-flex justify-content-center">
             <div class="col-lg-6 text-center">
               <h2>Dataset</h2>
-              <p>This is the cleaned Redfin data table</p>
+              <p>This is the cleaned Redfin data table.</p>
             </div>
           </div>
         </div>
@@ -99,24 +90,26 @@
     </div><!-- End Breadcrumbs -->
 
     <!-- This calls in the CSV dataset -->
-    <div id="CSVTable">
-      <script src="http://d3js.org/d3.v3.min.js"></script>
-      <script src="d3.min.js?v=3.2.8"></script>
-      <script type="text/javascript" charset="utf-8">
-        d3.text(src="../Resources/county_deltas.csv", function(data) {
-          var parsedCSV = d3.csv.parseRows(data);
-          var container = d3.select("body")
-            .append("table")
-              .selectAll("tr")
-                .data(parsedCSV).enter()
-                .append("tr")
-              .selectAll("td")
-                .data(function(d) { return d; }).enter()
-                .append("td")
-                .text(function(d) { return d; });
-                });
-      </script>
-    </div>
+    <center>
+      <div id="CSVTable">
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="d3.min.js?v=3.2.8"></script>
+        <script type="text/javascript" charset="utf-8">
+          d3.text(src="../Resources/county_deltas.csv", function(data) {
+            var parsedCSV = d3.csv.parseRows(data);
+            var container = d3.select("body")
+              .append("table")
+                .selectAll("tr")
+                  .data(parsedCSV).enter()
+                  .append("tr")
+                .selectAll("td")
+                  .data(function(d) { return d; }).enter()
+                  .append("td")
+                  .text(function(d) { return d; });
+                  });
+        </script>
+      </div>
+    </center>
       <!--End of Dataset Section -->
   </main>
 
