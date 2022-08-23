@@ -226,7 +226,44 @@ def county2021():
         housing_data_2021.append(dict2021)
     return jsonify(housing_data_2021)
 
+@app.route("/api/v1.0/state_merged_data", methods=['GET', 'POST'])
+@cross_origin(origin='*')
 
+def state_merged():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    """Return merged data (For now, All Residential property types only)"""
+    # Query all counties
+    results = session.query(County.year, County.state, func.avg(County.inventory), func.sum(County.homes_sold), func.avg(County.median_sale_price), func.avg(County.median_ppsf), func.sum(Pop.pop_estimate_2019), func.sum(Pop.pop_estimate_2020), func.sum(Pop.pop_estimate_2021)).group_by(County.year, County.state).filter(County.property_type == "All Residential").join(Pop, (Pop.state == County.state)).all()
+    session.close()
+    
+    # Create a dictionary from the row data and append to a list of all_data
+    state_merged_data = []
+
+    for year, state, inventory, homes_sold, median_sale_price, median_ppsf, pop_estimate_2019, pop_estimate_2020, pop_estimate_2021 in results:
+        state_merged_dict = {}
+        state_merged_dict["year"] = year
+        state_merged_dict["state"] = state
+        state_merged_dict["avg_inventory"] = str(inventory)
+        state_merged_dict["total_homes_sold"] = str(homes_sold)
+        state_merged_dict["avg_median_sale_price"] = str(median_sale_price)
+        state_merged_dict["avg_median_ppsf"] = str(median_ppsf)
+        state_merged_dict["pop_estimate_2019"] = pop_estimate_2019
+        state_merged_dict["pop_estimate_2020"] = pop_estimate_2020
+        state_merged_dict["pop_estimate_2021"] = pop_estimate_2021
+
+
+        state_merged_data.append(state_merged_dict)
+
+    if request.method == 'GET':
+        return jsonify(state_merged_data)  # serialize and use JSON headers
+    # POST request
+    if request.method == 'POST':
+        print(request.get_json())  # parse as JSON
+        return 'Sucesss', 200
+
+    return render_template("test_chart.html", state_merged_data=state_merged_data)
 
 # Define main behavior
 if __name__ == "__main__":

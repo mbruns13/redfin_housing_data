@@ -58,30 +58,93 @@ async function getData() {
     return { states_2019, homes_sold_2019, population_est_2019, sale_prices_2019, states_2020, homes_sold_2020, population_est_2020, sale_prices_2020, states_2021, homes_sold_2021, population_est_2021, sale_prices_2021 }
 };
 
-console.log(states_2019);
-console.log(population_est_2019);
+// console.log(states_2019);
+// console.log(population_est_2019);
 
 makeChart();
 
 async function makeChart() {
     const d = await getData();
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const mixedChart = new Chart(ctx, {
-        data: {
-            datasets: [{
-                type: 'bar',
-                label: 'Homes Sold',
-                data: d.sale_prices_2019,
-                borderColor: 'rgb(255, 99, 132)',
-                backgroundColor: 'rgba(255, 99, 132)'
-            }, {
-                type: 'line',
-                label: 'Population Estimates 2019',
+    // const ctx = document.getElementById('myChart').getContext('2d');
+    // const mixedChart = new Chart(ctx, {
+    //     data: {
+    //         datasets: [{
+    //             type: 'bar',
+    //             label: 'Homes Sold',
+    //             data: d.sale_prices_2019,
+    //             borderColor: 'rgb(255, 99, 132)',
+    //             backgroundColor: 'rgba(255, 99, 132)'
+    //         }, {
+    //             type: 'line',
+    //             label: 'Population Estimates 2019',
+    //             data: d.homes_sold_2019,
+    //             // borderColor: 'rgb(54, 162, 235)'
+    //         }],
+    //         labels: d.states_2019
+    //     },
+    //     options: {}
+    // });
+
+
+    ///////
+    const labels = d.states_2019;
+    const data = {
+        labels: labels,
+        datasets: [{
+                label: 'Estimated Population, 2019',
+                data: d.population_est_2019,
+                borderColor: 'red',
+                backgroundColor: 'red',
+                yAxisID: 'y',
+            },
+            {
+                label: 'Homes Sold, 2019',
                 data: d.homes_sold_2019,
-                // borderColor: 'rgb(54, 162, 235)'
-            }],
-            labels: d.states_2019
+                borderColor: 'blue',
+                backgroundColor: 'blue',
+                yAxisID: 'y1',
+            }
+        ]
+    };
+    const config = {
+        type: 'line',
+        data: data,
+        options: {
+            responsive: true,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            stacked: false,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Chart.js Line Chart - Multi Axis'
+                }
+            },
+            scales: {
+                y: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                },
+                y1: {
+                    type: 'linear',
+                    display: true,
+                    position: 'right',
+
+                    // grid line settings
+                    grid: {
+                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                    },
+                },
+            }
         },
-        options: {}
-    });
+    };
+    const myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+    );
+
+
 }
