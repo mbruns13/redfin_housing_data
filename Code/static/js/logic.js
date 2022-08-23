@@ -7,17 +7,21 @@ var myMap = L.map("map", {
     zoom: 4,
 });
 
-var tiles = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+// https://leaflet-extras.github.io/leaflet-providers/preview/
+var tiles = L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/toner-lite/{z}/{x}/{y}{r}.{ext}', {
+    attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    subdomains: 'abcd',
+    minZoom: 0,
+    maxZoom: 20,
+    ext: 'png'
 }).addTo(myMap);
-
 
 var geoData = "https://raw.githubusercontent.com/mbruns13/project_3_housing_data/main/Code/Resources/updated.geojson"
 var geojson;
 
 d3.json(geoData).then(function(data) {
     console.log(data.features[1]);
+
 
     L.geoJson(data, {
         style: {
@@ -30,14 +34,13 @@ d3.json(geoData).then(function(data) {
     }).addTo(myMap);
 
     function getColor(d) {
-        return d > 1000 ? '#800026' :
-            d > 500 ? '#BD0026' :
-            d > 200 ? '#E31A1C' :
-            d > 100 ? '#FC4E2A' :
-            d > 50 ? '#FD8D3C' :
-            d > 20 ? '#FEB24C' :
-            d > 10 ? '#FED976' :
-            'none';
+        return d > 1561134 ? '#23b029' :
+            d > 22476 ? '#80cc74' :
+            d > 125 ? '#c1e6b8' :
+            d > -71 ? '#ffffff' :
+            d > -18763 ? '#ff795a' :
+            d > -1451000 ? '#f00606' :
+            '#E9E9E9';
 
     }
 
@@ -48,7 +51,7 @@ d3.json(geoData).then(function(data) {
             opacity: 1,
             color: 'white',
             dashArray: '3',
-            fillOpacity: 0.6
+            fillOpacity: 1
         };
     }
 
@@ -107,11 +110,17 @@ d3.json(geoData).then(function(data) {
     legend.onAdd = function(map) {
 
         var div = L.DomUtil.create('div', 'info legend'),
-            grades = [0, 10, 20, 50, 100, 200, 500, 1000],
-            labels = [];
+            // grades = [0, 10, 20, 50, 100, 200, 500, 1000],
+            grades = [NaN, -1451000, -18763, -71, 125, 22476, 1561134]
+        labels = [];
 
+        // generate a label for grey / undefined counties on the map
+        div.innerHTML =
+            '<i style="background:' + getColor(grades[1]) + '"></i> ' +
+            'Undefined' + '<br>';
         // loop through our density intervals and generate a label with a colored square for each interval
-        for (var i = 0; i < grades.length; i++) {
+
+        for (var i = 1; i < grades.length; i++) {
             div.innerHTML +=
                 '<i style="background:' + getColor(grades[i] + 1) + '"></i> ' +
                 grades[i] + (grades[i + 1] ? '&ndash;' + grades[i + 1] + '<br>' : '+');
@@ -126,7 +135,5 @@ d3.json(geoData).then(function(data) {
         style: style,
         onEachFeature: onEachFeature
     }).addTo(myMap);
-
-
 
 });
