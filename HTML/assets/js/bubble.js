@@ -48,6 +48,7 @@ function buildChart(year) {
                 }
         };
         uniqueCount.push(allResidential,singleFamily,condoCoop,multiFamily,townhouse);
+        console.log(uniqueCount[0]/10)
         // Trace for the bubble chart
         var bubbleData = [{
             type: 'bubble',
@@ -56,15 +57,15 @@ function buildChart(year) {
             text: uniqueTypes,
             mode: 'markers',
             marker: {
-                // size: ((uniqueCount[0]/100),(uniqueCount[1]/100),(uniqueCount[2]/100),(uniqueCount[3]/100),(uniqueCount[4]/100)),
-                size: [20,40,80,100,200],
-                color: [uniqueTypes]
+                size: [uniqueCount[0]/30,uniqueCount[1]/30,uniqueCount[2]/30,uniqueCount[3]/30,uniqueCount[4]/30],
+                color: ['#E6B333', '#3366E6', '#999966', '#99FF99', '#B34D4D']
             }
         }];
         // Labels and titles for bubble chart
         var bubbleLayout = {
             title: 'Property Type Distribution',
-            xaxis: { title: "Property Types" },
+            xaxis: { 
+                title: "Property Types" },
             hovermode: 'closest',
         };
         // Plots the bubble chart
