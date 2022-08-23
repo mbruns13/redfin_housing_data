@@ -1,7 +1,4 @@
 // used code from: https://leafletjs.com/examples/choropleth/
-
-// colors/legend are not yet updated to reflect our data
-
 var myMap = L.map("map", {
     center: [37.09, -95.71],
     zoom: 4,
