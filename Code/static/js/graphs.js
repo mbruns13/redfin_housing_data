@@ -5,31 +5,33 @@ const homes_sold_2019 = []
 const homes_sold_2020 = []
 const homes_sold_2021 = []
 
-// async function getData() {
-d3.json(query_url).then(function(data) {
-    // console.log(data[0]);
+function getData(chart) {
+    d3.json(query_url).then(function(data) {
+        // console.log(data[0]);
 
-    for (var i = 0; i < data.length; i++) {
-        if (data[i]["year"] == 2019) {
-            property_types.push(data[i].property_type)
-            homes_sold_2019.push(parseInt(data[i].total_homes_sold))
+        for (var i = 0; i < data.length; i++) {
+            if (data[i]["year"] == 2019) {
+                property_types.push(data[i].property_type)
+                homes_sold_2019.push(parseInt(data[i].total_homes_sold))
 
-        } else if (data[i]["year"] == 2020) {
-            homes_sold_2020.push(parseInt(data[i].total_homes_sold))
+            } else if (data[i]["year"] == 2020) {
+                homes_sold_2020.push(parseInt(data[i].total_homes_sold))
 
-        } else if (data[i]["year"] == 2021) {
-            homes_sold_2021.push(parseInt(data[i].total_homes_sold))
+            } else if (data[i]["year"] == 2021) {
+                homes_sold_2021.push(parseInt(data[i].total_homes_sold))
 
+            }
+
+            // } 
         }
 
-        // } 
-    }
+        return property_types, homes_sold_2019, homes_sold_2020, homes_sold_2021
 
-    return property_types, homes_sold_2019, homes_sold_2020, homes_sold_2021
+    });
+    chart.update()
 
+}
 
-});
-// };
 
 var barChartData = {
     labels: property_types,
@@ -77,3 +79,4 @@ window.onload = function() {
         options: chartOptions
     });
 };
+getData(window.myBar)
