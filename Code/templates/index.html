@@ -2,301 +2,283 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Project 3</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+  <title>U.S. Housing Data</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <!-- Favicons -->
-    <link href="../static/img/favicon.png" rel="icon">
-    <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Favicons -->
+  <link href="../static/img/favicon.png" rel="icon">
+  <link href="../static/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
-        rel="stylesheet">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="../static/vendor/aos/aos.css" rel="stylesheet">
-    <link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="../static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="../static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../static/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../static/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../static/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="../static/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="../static/css/main.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="../static/css/main.css" rel="stylesheet">
 
 </head>
-
 <body>
 
-    <!-- Makes the header and navbar -->
-    <header id="header" class="header d-flex align-items-center">
+<!-- Makes the header and navbar -->
+  <header id="header" class="header d-flex align-items-center">
 
-        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
-                <!-- Uncomment the line below if you also wish to use an image logo -->
-                <h1>Project 3<span>.</span></h1>
-            </a>
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#team">Team</a></li>
-                    <li><a href="dataset.html">Dataset</a></li>
-                    <li><a href="bubble.html">Bubble Chart</a></li>
-                    <li><a href="choropleth.html">Choropleth</a></li>
-                    <li><a href="graphs.html">Bar Chart</a></li>
-                </ul>
-            </nav>
-            <!-- .navbar -->
+    <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <!-- Uncomment the line below if you also wish to use an image logo -->
+        <h1>U.S. Housing Data<span>.</span></h1>
+      </a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="dataset.html">Dataset</a></li>
+          <li><a href="bubble.html">Bubble Chart</a></li>
+          <li><a href="choropleth.html">Choropleth</a></li>
+          <li><a href="graphs.html">Bar Chart</a></li>
+        </ul>
+      </nav><!-- .navbar -->
 
-            <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-            <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
 
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="hero">
+    <div class="container position-relative">
+      <div class="row gy-5" data-aos="fade-in">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
+          <h2>Welcome to <span>our housing project!</span></h2>
+          <p>This page explores Redfin Housing Market Data throughout the years of 2019 and 2021. We hope this provides some useful information when shopping for properties within the U.S., in the states served by Redfin.</p>
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="#about" class="btn-get-started">About our Project</a>
+          </div>
         </div>
-    </header>
-    <!-- End Header -->
+        <div class="col-lg-6 order-1 order-lg-2">
+          <img src="../static/img/hero-img.svg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
+        </div>
+      </div>
+    </div>
 
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="hero">
-        <div class="container position-relative">
-            <div class="row gy-5" data-aos="fade-in">
-                <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center text-center text-lg-start">
-                    <h2>Welcome to <span>our dataset</span></h2>
-                    <p>This page explores the Redfin Housing Market Data 2012-2021.</p>
-                    <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href="#about" class="btn-get-started">Get Started</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 order-1 order-lg-2">
-                    <img src="../static/img/hero-img.svg" class="img-fluid" alt="" data-aos="zoom-out" data-aos-delay="100">
-                </div>
+    <div class="icon-boxes position-relative">
+      <div class="container position-relative">
+        <div class="row gy-4 mt-5">
+
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-easel"></i></div>
+              <h4 class="title"><a href="graphs.html" class="stretched-link">Bar Chart</a></h4>
             </div>
-        </div>
+          </div>
+          <!--End Icon Box -->
 
-        <div class="icon-boxes position-relative">
-            <div class="container position-relative">
-                <div class="row gy-4 mt-5">
-
-                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-easel"></i></div>
-                            <h4 class="title"><a href="graphs.html" class="stretched-link">Bar Chart</a></h4>
-                        </div>
-                    </div>
-                    <!--End Icon Box -->
-
-                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-gem"></i></div>
-                            <h4 class="title"><a href="bubble.html" class="stretched-link">Bubble Chart</a></h4>
-                        </div>
-                    </div>
-                    <!--End Icon Box -->
-
-                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-geo-alt"></i></div>
-                            <h4 class="title"><a href="chloropleth.html" class="stretched-link">Chloropleth Map</a></h4>
-                        </div>
-                    </div>
-                    <!--End Icon Box -->
-
-                    <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
-                        <div class="icon-box">
-                            <div class="icon"><i class="bi bi-command"></i></div>
-                            <h4 class="title"><a href="#about" class="stretched-link">About</a></h4>
-                        </div>
-                    </div>
-                    <!--End Icon Box -->
-
-                </div>
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-gem"></i></div>
+              <h4 class="title"><a href="bubble.html" class="stretched-link">Bubble Chart</a></h4>
             </div>
-        </div>
+          </div>
+          <!--End Icon Box -->
+
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-geo-alt"></i></div>
+              <h4 class="title"><a href="choropleth.html" class="stretched-link">Choropleth Map</a></h4>
+            </div>
+          </div>
+          <!--End Icon Box -->
+
+          <div class="col-xl-3 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="icon-box">
+              <div class="icon"><i class="bi bi-command"></i></div>
+              <h4 class="title"><a href="#about" class="stretched-link">About</a></h4>
+            </div>
+          </div>
+          <!--End Icon Box -->
 
         </div>
+      </div>
+    </div>
+
+    </div>
+  </section>
+  <!-- End Hero Section -->
+
+  <main id="main">
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>About</h2>
+          <!-- <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat sunt id nobis omnis tiledo stran delop</p> -->
+        </div>
+
+        <div class="row gy-4">
+          <div class="col-lg-6">
+            <h3>Data Sources</h3>
+            <img src="../static/test_images/tierra-mallorca-JXI2Ap8dTNc-unsplash.jpg" class="img-fluid rounded-4 mb-4" alt="">
+            <p>Housing Data Source: Redfin Housing U.S. Dataset obtained via <a href="https://www.kaggle.com/datasets/thuynyle/redfin-housing-market-data">Kaggle</a>. This residential real estate data set was created by Redfin, an online real estate brokerage. Published on January 9th, 2022, this data summarize the monthly housing market for every State, Metro, and Zip code in the US from 2012 to 2021. Redfin aggregated this data across multiple listing services and has been gracious enough to include property type in their reporting.</p>
+            <p>Population Data Source: <a href="https://www.census.gov/data/datasets/time-series/demo/popest/2010s-state-total.html#par_textimage_1873399417">U.S. Census 2010-2019 Dataset</a> and the <a href="https://www.census.gov/data/tables/time-series/demo/popest/2020s-state-total.html">2020-2021 U.S. Census Dataset</a>, both of which provided information regarding population estimates for all of the United States, provided by the official U.S. Census website.</p>
+            <!-- <p>Ut fugiat ut sunt quia veniam. Voluptate perferendis perspiciatis quod nisi et. Placeat debitis quia recusandae odit et consequatur voluptatem. Dignissimos pariatur consectetur fugiat voluptas ea.</p> -->
+            <!-- <p>Temporibus nihil enim deserunt sed ea. Provident sit expedita aut cupiditate nihil vitae quo officia vel. Blanditiis eligendi possimus et in cum. Quidem eos ut sint rem veniam qui. Ut ut repellendus nobis tempore doloribus debitis explicabo similique sit. Accusantium sed ut omnis beatae neque deleniti repellendus.</p> -->
+          </div>
+          <div class="col-lg-6">
+            <div class="content ps-0 ps-lg-5">
+              <p class="fst-italic">
+                For our project, we wanted to create visualizations that allow people to better ingest Housing Market data during the COVID-19 pandemic:
+              </p>
+              <ul>
+                <li><i class="bi bi-check-circle-fill"></i> Housing prices over time (by County, Zip).</li>
+                <li><i class="bi bi-check-circle-fill"></i> Housing price by population density (by County, Zip).</li>
+                <li><i class="bi bi-check-circle-fill"></i> Housing availablility over time (by County, Zip).</li>
+              </ul>
+              <!-- <p> -->
+                <!-- Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate -->
+                <!-- velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident -->
+              <!-- </p> -->
+
+              <div class="position-relative mt-4">
+                <img src="../static/test_images/tierra-mallorca-NpTbVOkkom8-unsplash.jpg" class="img-fluid rounded-4" alt="">
+                <!-- <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a> -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </section>
-    <!-- End Hero Section -->
+    <!-- End About Us Section -->
 
-    <main id="main">
+    <!-- ======= Our Team Section ======= -->
+    <section id="team" class="team">
+      <div class="container" data-aos="fade-up">
 
-        <!-- ======= About Us Section ======= -->
-        <section id="about" class="about">
-            <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>Our Team</h2>
+          <!-- <p>Nulla dolorum nulla nesciunt rerum facere sed ut inventore quam porro nihil id ratione ea sunt quis dolorem dolore earum</p> -->
+        </div>
 
-                <div class="section-header">
-                    <h2>About</h2>
-                    <!-- <p>Aperiam dolorum et et wuia molestias qui eveniet numquam nihil porro incidunt dolores placeat sunt id nobis omnis tiledo stran delop</p> -->
-                </div>
+        <div class="row gy-4">
 
-                <div class="row gy-4">
-                    <div class="col-lg-6">
-                        <h3>Data sources</h3>
-                        <img src="../static/test_images/tierra-mallorca-JXI2Ap8dTNc-unsplash.jpg" class="img-fluid rounded-4 mb-4" alt="">
-                        <p>RedFin Data Center obtained via kaggle.com. This residential real estate data set was created by Redfin, an online real estate brokerage. Published on January 9th, 2022, this data summarize the monthly housing market for every
-                            State, Metro, and Zip code in the US from 2012 to 2021. Redfin aggregated this data across multiple listing services and has been gracious enough to include property type in their reporting. Please properly cite and link to
-                            RedFin if you end up using this data for your research or project.</p>
-                        <!-- <p>Ut fugiat ut sunt quia veniam. Voluptate perferendis perspiciatis quod nisi et. Placeat debitis quia recusandae odit et consequatur voluptatem. Dignissimos pariatur consectetur fugiat voluptas ea.</p> -->
-                        <!-- <p>Temporibus nihil enim deserunt sed ea. Provident sit expedita aut cupiditate nihil vitae quo officia vel. Blanditiis eligendi possimus et in cum. Quidem eos ut sint rem veniam qui. Ut ut repellendus nobis tempore doloribus debitis explicabo similique sit. Accusantium sed ut omnis beatae neque deleniti repellendus.</p> -->
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="content ps-0 ps-lg-5">
-                            <p class="fst-italic">
-                                For our project, we wanted to create visualizations that allow people to better ingest Housing Market data during the COVID-19 pandemic:
-                            </p>
-                            <ul>
-                                <li><i class="bi bi-check-circle-fill"></i> Housing prices over time (by County, Zip).</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Housing price by population density (by County, Zip).</li>
-                                <li><i class="bi bi-check-circle-fill"></i> Housing availablility over time (by County, Zip).</li>
-                            </ul>
-                            <!-- <p> -->
-                            <!-- Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate -->
-                            <!-- velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident -->
-                            <!-- </p> -->
-
-                            <div class="position-relative mt-4">
-                                <img src="../static/test_images/tierra-mallorca-NpTbVOkkom8-unsplash.jpg" class="img-fluid rounded-4" alt="">
-                                <!-- <a href="https://www.youtube.com/watch?v=LXb3EKWsInQ" class="glightbox play-btn"></a> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+            <div class="member">
+              <img src="https://media-exp1.licdn.com/dms/image/C4D03AQFmdy315Nng4w/profile-displayphoto-shrink_800_800/0/1619970321242?e=1666828800&v=beta&t=kwROH05ppqTbr3sQ1qY_0wW9ES0VXjUPRrivWYuw-Ys" class="img-fluid" alt="">
+              <h4>Molly Bruns</h4>
+              <span>Project Coordinator</span>
+              <div class="social">
+                <a href="https://github.com/mbruns13"><i class="bi bi-github"></i></a>
+                <a href="https://www.linkedin.com/in/mollybruns/"><i class="bi bi-linkedin"></i></a>
+              </div>
             </div>
-        </section>
-        <!-- End About Us Section -->
+          </div><!-- End Team Member -->
 
-        <!-- ======= Our Team Section ======= -->
-        <section id="team" class="team">
-            <div class="container" data-aos="fade-up">
-
-                <div class="section-header">
-                    <h2>Our Team</h2>
-                    <!-- <p>Nulla dolorum nulla nesciunt rerum facere sed ut inventore quam porro nihil id ratione ea sunt quis dolorem dolore earum</p> -->
-                </div>
-
-                <div class="row gy-4">
-
-                    <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-                        <div class="member">
-                            <img src="../static/img/team/team-1.jpg" class="img-fluid" alt="">
-                            <h4>Jim</h4>
-                            <span>Chief Technology Officer</span>
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Team Member -->
-
-                    <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
-                        <div class="member">
-                            <img src="../static/img/team/team-2.jpg" class="img-fluid" alt="">
-                            <h4>Molly</h4>
-                            <span>Chief Financial Officer</span>
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Team Member -->
-
-                    <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
-                        <div class="member">
-                            <img src="../static/img/team/team-3.jpg" class="img-fluid" alt="">
-                            <h4>Kevin</h4>
-                            <span>Chief Marketing Officer</span>
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Team Member -->
-
-                    <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
-                        <div class="member">
-                            <img src="../static/img/team/team-4.jpg" class="img-fluid" alt="">
-                            <h4>Maite</h4>
-                            <span>Chief Operating Officer</span>
-                            <div class="social">
-                                <a href=""><i class="bi bi-twitter"></i></a>
-                                <a href=""><i class="bi bi-facebook"></i></a>
-                                <a href=""><i class="bi bi-instagram"></i></a>
-                                <a href=""><i class="bi bi-linkedin"></i></a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End Team Member -->
-
-                </div>
-
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+            <div class="member">
+              <img src="https://media-exp1.licdn.com/dms/image/C4E03AQHlnEZQ9y0MuA/profile-displayphoto-shrink_800_800/0/1649909159906?e=1666828800&v=beta&t=wwGE0l7-So98V-AenBC2YXKYHlASp2cjiho53WYamqg" class="img-fluid" alt="">
+              <h4>Kevin Flores</h4>
+              <span>Real Estate Agent</span>
+              <div class="social">
+                <a href="https://github.com/flores-kevin"><i class="bi bi-github"></i></a>
+                <a href="https://www.linkedin.com/in/kevin-flores-097991237/"><i class="bi bi-linkedin"></i></a>
+              </div>
             </div>
-        </section>
-        <!-- End Our Team Section -->
-    </main>
+          </div><!-- End Team Member -->
 
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-
-        <div class="container">
-            <div class="row gy-4">
-                <div class="col-lg-5 col-md-12 footer-info">
-                    <a href="index.html" class="logo d-flex align-items-center">
-                        <span>Project 3.</span>
-                    </a>
-                </div>
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+            <div class="member">
+              <img src="https://media-exp1.licdn.com/dms/image/C4D03AQE72sf0pxWI6Q/profile-displayphoto-shrink_800_800/0/1617401029138?e=1666828800&v=beta&t=wbYVawCrLpBSrN02djSvQNwmVHRmUvJmnPiq0flj2aM" class="img-fluid" alt="">
+              <h4>Maite Rivas</h4>
+              <span>Verizon Sales</span>
+              <div class="social">
+                <a href="https://github.com/maiterivas"><i class="bi bi-github"></i></a>
+                <a href="https://www.linkedin.com/in/maiterivas/"><i class="bi bi-linkedin"></i></a>
+              </div>
             </div>
-            <div class="container mt-4">
-                <div class="copyright">
-                    &copy; Copyright <strong><span>Impact</span></strong>. All Rights Reserved
-                </div>
-                <div class="credits">
-                    Dataset by Redfin provided by <a href="https://www.kaggle.com/datasets/thuynyle/redfin-housing-market-data?select=county_market_tracker.tsv000">Kaggle</a>
-                </div>
-                <div class="credits">
-                    Dataset by HugeQuiz provided by <a href="https://www.kaggle.com/datasets/darinhawley/us-2021-census-cities-populations-coordinates">Kaggle</a>
-                </div>
-                <div class="credits">
-                    <!-- All the links in the footer should remain intact. -->
-                    <!-- You can delete the links only if you purchased the pro version. -->
-                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                    <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/impact-bootstrap-business-website-template/ -->
-                    Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                </div>
+          </div><!-- End Team Member -->
+
+          <div class="col-xl-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+            <div class="member">
+              <img src="https://media-exp1.licdn.com/dms/image/C5103AQFeby5805OiXQ/profile-displayphoto-shrink_800_800/0/1516884373094?e=1666828800&v=beta&t=36TeR5uA22yIakmduuiq75blf2A9KzdMap0oKlFCKRE" class="img-fluid" alt="">
+              <h4>Jim Strale</h4>
+              <span>Healthcare Analytics</span>
+              <div class="social">
+                <a href="https://github.com/jimstrale"><i class="bi bi-github"></i></a>
+                <a href="https://www.linkedin.com/in/jim-strale-935aba55/"><i class="bi bi-linkedin"></i></a>
+              </div>
             </div>
-    </footer>
-    <!-- End Footer -->
+          </div><!-- End Team Member -->
 
-    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+        </div>
 
-    <div id="preloader"></div>
+      </div>
+    </section><!-- End Our Team Section -->
+  </main>
 
-    <!-- Vendor JS Files -->
-    <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../static/vendor/aos/aos.js"></script>
-    <script src="../static/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="../static/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="../static/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="../static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="../static/vendor/php-email-form/validate.js"></script>
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
 
-    <!-- Template Main JS File -->
-    <script src="../static/js/main.js"></script>
-    <!-- D3 Library resource link -->
-    <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-5 col-md-12 footer-info">
+          <a href="index.html" class="logo d-flex align-items-center">
+            <span>Project 3.</span>
+          </a>
+        </div>
+      </div>
+    <div class="container mt-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Impact</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        Dataset by Redfin provided by <a href="https://www.kaggle.com/datasets/thuynyle/redfin-housing-market-data?select=county_market_tracker.tsv000">Kaggle</a>
+      </div>
+      <div class="credits">
+        Dataset by U.S. Census provided by <a href="https://www.census.gov">U.S. Census Bureau</a>
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/impact-bootstrap-business-website-template/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../static/vendor/aos/aos.js"></script>
+  <script src="../static/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../static/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="../static/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="../static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../static/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../static/js/main.js"></script>
+  <!-- D3 Library resource link -->
+  <!-- <script src="https://d3js.org/d3.v5.min.js"></script> -->
 
 </body>
 

@@ -2,11 +2,11 @@
 
 ## Project Proposal:
 
-### What is your question you want answered or how you want end users (i.e. the public) to use your site or visualizations: 
+### Questions to answer or how you want end users (i.e. the public) to use your site or visualizations: 
 * For our project, we wanted to create visualizations that allow people to better ingest Housing Market data during the COVID-19 pandemic (2019-2021):
-  * Housing prices over time (by County)
-  * Housing price by population density (by County)
-  * Housing availablility over time (by County)
+  * Difference in housing prices over time (by County)
+  * Housing price versus population estimate (by County)
+  * Property type availablility over time (by County)
 
 ### Data Sources 
 
@@ -19,6 +19,6 @@
 
 ### Initial ideas for pages or visuals
 * Home Page
-* Dashboard View: using Charts.js, Word Cloud, Plotly (filter by state, county)
+* Dashboard View: using Charts.js, Leaflet, Plotly (filter by state, county)
 * Map View: Leaflet, HeatMap (filter by state, county)
-* Data View: Table with available data for users to ingest on their own
+* Data View: Table with available raw data for users to ingest
