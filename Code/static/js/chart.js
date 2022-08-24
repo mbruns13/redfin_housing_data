@@ -94,4 +94,6 @@ window.onload = function() {
         data: barChartData,
         options: chartOptions
     });
-};
+};d('myChart'),
+    config);d('myChart'),
+    config);
