@@ -72,7 +72,7 @@ var barChartData = {
 var chartOptions = {
     responsive: true,
     legend: {
-        position: "top"
+        position: "bottom"
     },
     title: {
         display: true,
