@@ -42,7 +42,8 @@ def index():
         f"/api/v1.0/housing_data_2019<br/>"
         f"/api/v1.0/housing_data_2020<br/>"
         f"/api/v1.0/housing_data_2021<br/>"
-        f"/api/v1.0/county_data_deltas"
+        f"/api/v1.0/county_data_deltas<br/>"
+        f"/api/v1.0/property_totals"
     )
         #return render_template("index.html")
 
@@ -92,7 +93,6 @@ def grouped():
         data_dict["avg_median_ppsf"] = str(median_ppsf)
 
         all_housing_data.append(data_dict)
-
     return jsonify(all_housing_data)
 
 @app.route("/api/v1.0/merged_data", methods=['GET', 'POST'])
@@ -264,6 +264,53 @@ def state_merged():
         return 'Sucesss', 200
 
     return render_template("test_chart.html", state_merged_data=state_merged_data)
+
+
+
+
+
+
+
+
+
+
+
+
+@app.route("/api/v1.0/property_totals")
+@cross_origin(origin='*')
+def properties():
+    # Create our session (link) from Python to the DB
+    session = Session(engine)
+
+    """Return properties / homes sold data"""
+    # Query all counties
+    results = session.query(County.year, County.property_type, func.sum(County.homes_sold)).group_by(County.year, County.property_type).filter(County.property_type != "All Residential").all()
+
+    session.close()
+    
+    # Create a dictionary from the row data and append to a list of all_data
+    property_totals = []
+
+    for year, property_type, homes_sold in results:
+        property_totals_dict = {}
+        property_totals_dict["year"] = year
+        property_totals_dict["property_type"] = property_type
+        property_totals_dict["total_homes_sold"] = str(homes_sold)
+       
+
+        property_totals.append(property_totals_dict)
+
+    return jsonify(property_totals)
+
+
+
+
+
+
+
+
+
+
 
 # Define main behavior
 if __name__ == "__main__":

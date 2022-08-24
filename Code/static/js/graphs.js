@@ -1,110 +1,91 @@
-// http://127.0.0.1:5000/api/v1.0/counties
-// http://127.0.0.1:5000/api/v1.0/grouped_data
-// http://127.0.0.1:5000/api/v1.0/merged_data
-// http://127.0.0.1:5000/api/v1.0/housing_data_2019
-// http://127.0.0.1:5000/api/v1.0/housing_data_2020
-// http://127.0.0.1:5000/api/v1.0/housing_data_2021
-// http://127.0.0.1:5000/api/v1.0/county_data_deltas
+const myHeaders = new Headers();
+myHeaders.append('Accept', 'Header 2');
+
+const myInit = {
+    method: 'GET',
+    headers: myHeaders,
+    mode: 'cors',
+    cache: 'default',
+};
+
+const query_url = "http://127.0.0.1:5000/api/v1.0/property_totals";
+
+const property_types = []
+    // const property_type_2020 = []
+    // const property_type_2021 = []
+const homes_sold_2019 = []
+const homes_sold_2020 = []
+const homes_sold_2021 = []
+
+// async function getData() {
+d3.json(query_url).then(function(data) {
+    // console.log(data[0]);
+
+    for (var i = 0; i < data.length; i++) {
+        if (data[i]["year"] == 2019) {
+            property_types.push(data[i].property_type)
+            homes_sold_2019.push(parseInt(data[i].total_homes_sold))
+
+        } else if (data[i]["year"] == 2020) {
+            homes_sold_2020.push(parseInt(data[i].total_homes_sold))
+
+        } else if (data[i]["year"] == 2021) {
+            homes_sold_2021.push(parseInt(data[i].total_homes_sold))
+
+        }
+
+        // } 
+    }
+
+    return property_types, homes_sold_2019, homes_sold_2020, homes_sold_2021
 
 
-var counties_url = "http://127.0.0.1:5000//api/v1.0/counties";
+});
+// };
 
-function init() {
-    d3.json(counties_url).then((data) => {
-        // var counties = [];
-        console.log(counties);
+var barChartData = {
+    labels: property_types,
+    datasets: [{
+            label: "2019",
+            backgroundColor: "pink",
+            borderColor: "red",
+            borderWidth: 1,
+            data: homes_sold_2019
+        },
+        {
+            label: "2020",
+            backgroundColor: "lightblue",
+            borderColor: "blue",
+            borderWidth: 1,
+            data: homes_sold_2020
+        },
+        {
+            label: "2021",
+            backgroundColor: "lightgreen",
+            borderColor: "green",
+            borderWidth: 1,
+            data: homes_sold_2021
+        },
+    ]
+};
 
-    });
+var chartOptions = {
+    responsive: true,
+    legend: {
+        position: "top"
+    },
+    title: {
+        display: true,
+        text: "Property Types Sold by Year"
+    },
+
 }
 
-
-
-
-
-
-// // Sets function for D3 library to gather json data
-// function init() {
-//     var selector = d3.select("#selDataset");
-//     d3.json(url).then((data) => {
-//         var names = data.names;
-//         names.forEach((sampleID) => {
-//             selector.append("option").text(sampleID).property("value", sampleID);
-//         });
-//         var sample1 = names[0];
-//         buildMeta(sample1);
-//         buildChart(sample1);
-//     });
-// }
-// // Calls the chart and panel building functions when an option is changed
-// function optionChanged(sample) {
-//     buildMeta(sample);
-//     buildChart(sample);
-// }
-// // Builds the metadata panel
-// function buildMeta(sample) {
-//     d3.json(url).then((data) => {
-//         var meta = data.metadata;
-//         var data = meta.filter(sampleObj => sampleObj.id == sample);
-//         var result = data[0];
-//         var panel = d3.select("#sample-metadata");
-//         panel.html("");
-//         panel.append("h6").text("ID : " + result.id);
-//         panel.append("h6").text('Ethnicity : ' + result.ethnicity);
-//         panel.append("h6").text("Gender : " + result.gender);
-//         panel.append("h6").text("Age : " + result.age);
-//         panel.append("h6").text("Location : " + result.location);
-//         panel.append("h6").text("BBTYPE : " + result.bbtype);
-//         panel.append("h6").text("WFREQ : " + data[0].wfreq);
-//     });
-// }
-// // Builds both the bar chart and the bubble chart
-// // Fetches data needed and sets variables for individual arrays
-// function buildChart(sample) {
-//     d3.json(url).then((data) => {
-//         var samples = data.samples;
-//         var data = samples.filter(sampleObj => sampleObj.id == sample);
-//         var otu = data[0].otu_ids;
-//         var values = data[0].sample_values;
-//         var labels = data[0].otu_labels;
-//         // Sets up ticks and labels when hovering over bar chart and maps
-//         // top ten bacteria values in descending order along with labels
-//         var yticks = otu.slice(0, 10).map(otu => "OTU " + otu).reverse();
-//         var xticks = values.slice(0, 10).reverse()
-//         var hoverlabels = labels.slice(0, 10).reverse()
-//         // Trace for the bar chart. 
-//         var barData = [{
-//             type: 'bar',
-//             orientation: 'h',
-//             text: hoverlabels,
-//             y: yticks,
-//             x: xticks,
-//         }
-//         ];
-//         // Sets title for bar chart
-//         var barLayout = {
-//             title: 'Top 10 Bacteria Cultures Found'
-//         };
-//         // Plots bar chart
-//         Plotly.newPlot("bar", barData, barLayout);
-
-//         // Trace for the bubble chart
-//         var bubbleData = [{
-//             type: 'bubble',
-//             x: otu,
-//             y: values,
-//             text: labels,
-//             mode: 'markers',
-//             marker: { size: values, color: otu }
-//         }];
-//         // Labels and titles for bubble chart
-//         var bubbleLayout = {
-//             title: 'Bacteria Cultures Per Sample',
-//             xaxis: { title: "OTU ID" },
-//             hovermode: 'closest',
-//         };
-//         // Plots the bubble chart
-//         Plotly.newPlot("bubble", bubbleData, bubbleLayout);
-//     });
-// };
-// // Calls init() function to create first sample panel and charts
-// init();
+window.onload = function() {
+    var ctx = document.getElementById("property_bar").getContext("2d");
+    window.myBar = new Chart(ctx, {
+        type: "bar",
+        data: barChartData,
+        options: chartOptions
+    });
+};
