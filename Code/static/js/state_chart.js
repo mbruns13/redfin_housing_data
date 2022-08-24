@@ -14,21 +14,42 @@ d3.json(state_url).then(function(data) {
             x: labels,
             y: [952, 80, 31797, 1135],
             name: '2019',
-            type: 'bar'
+            type: 'bar',
+            marker: {
+                color: 'pink',
+                line: {
+                    color: 'red',
+                    width: 1
+                }
+            }
         };
 
         var trace2 = {
             x: labels,
             y: [881, 100, 34828, 1279],
             name: '2020',
-            type: 'bar'
+            type: 'bar',
+            marker: {
+                color: 'lightblue',
+                line: {
+                    color: 'blue',
+                    width: 1
+                }
+            }
         };
 
         var trace3 = {
             x: labels,
             y: [1064, 130, 36303, 1325],
             name: '2021',
-            type: 'bar'
+            type: 'bar',
+            marker: {
+                color: 'lightgreen',
+                line: {
+                    color: 'green',
+                    width: 1
+                }
+            }
         };
 
         var barData = [trace1, trace2, trace3];
