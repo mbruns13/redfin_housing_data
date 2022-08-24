@@ -47,7 +47,12 @@
           <li><a href="dataset.html">Dataset</a></li>
           <li><a href="bubble.html">Bubble Chart</a></li>
           <li><a href="choropleth.html">Choropleth</a></li>
-          <li><a href="graphs.html">Bar Chart</a></li>
+          <li class="dropdown"><a href="#"><span>Bar Charts</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+              <li><a href="graphs.html">Bar Chart 1</a></li>
+              <li><a href="chart.html">Bar Chart 2</a></li>
+            </ul>
+          </li>
         </ul>
       </nav><!-- .navbar -->
 
@@ -145,9 +150,9 @@
                 For our project, we wanted to create visualizations that allow people to better ingest Housing Market data during the COVID-19 pandemic:
               </p>
               <ul>
-                <li><i class="bi bi-check-circle-fill"></i> Housing prices over time (by County, Zip).</li>
-                <li><i class="bi bi-check-circle-fill"></i> Housing price by population density (by County, Zip).</li>
-                <li><i class="bi bi-check-circle-fill"></i> Housing availablility over time (by County, Zip).</li>
+                <li><i class="bi bi-check-circle-fill"></i> Housing prices over time (by State, County).</li>
+                <li><i class="bi bi-check-circle-fill"></i> Housing price by population density (by State, County).</li>
+                <li><i class="bi bi-check-circle-fill"></i> Housing availablility over time (by State, County).</li>
               </ul>
               <!-- <p> -->
                 <!-- Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate -->
@@ -165,6 +170,66 @@
       </div>
     </section>
     <!-- End About Us Section -->
+
+  <!-- ======= Our Services Section ======= -->
+    <section id="services" class="services sections-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Visualizations Overview</h2>
+          <p>Charts produced to help interpret and visualize our analyses.</p>
+        </div>
+
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="100">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="service-item  position-relative">
+              <div class="icon">
+                <i class="bi bi-activity"></i>
+              </div>
+              <h3>Bubble Chart</h3>
+              <!-- <p>Provident nihil minus qui consequatur non omnis maiores. Eos accusantium minus dolores iure perferendis tempore et consequatur.</p> -->
+              <img class="graph1" style="width:300px;" src="../static/img/bubble_chartfig.png" href="bubble chart">
+              <a href="bubble.html" class="readmore stretched-link"></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-broadcast"></i>
+              </div>
+              <h3>Choropleth Map</h3>
+              <!-- <p>Ut autem aut autem non a. Sint sint sit facilis nam iusto sint. Libero corrupti neque eum hic non ut nesciunt dolorem.</p> -->
+              <img class="graph2" style="width:300px;" src="../static/img/choropleth_fig.png" href="choropleth map">
+              <a href="choropleth.html" class="readmore stretched-link"></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-easel"></i>
+              </div>
+              <h3>Bar Chart.js Property Type</h3>
+              <!-- <p>Ut excepturi voluptatem nisi sed. Quidem fuga consequatur. Minus ea aut. Vel qui id voluptas adipisci eos earum corrupti.</p> -->
+              <img class="graph3" style="width:300px;" src="../static/img/property_type_bars.png" href="">
+              <a href="graphs.html" class="readmore stretched-link"></a>
+            </div>
+          </div><!-- End Service Item -->
+
+          <div class="col-lg-6 col-md-6">
+            <div class="service-item position-relative">
+              <div class="icon">
+                <i class="bi bi-bounding-box-circles"></i>
+              </div>
+              <h3>Bar Chart.js State & Average Sale Price</h3>
+              <!-- <p>Non et temporibus minus omnis sed dolor esse consequatur. Cupiditate sed error ea fuga sit provident adipisci neque.</p> -->
+              <img class="graph4" style="width:300px;" src="./assets/test_images/Fig4.png" href="">
+              <a href="graphs.html" class="readmore stretched-link"></a>
+            </div>
+          </div><!-- End Service Item -->
+
 
     <!-- ======= Our Team Section ======= -->
     <section id="team" class="team">

@@ -1,13 +1,3 @@
-const myHeaders = new Headers();
-myHeaders.append('Accept', 'Header 2');
-
-const myInit = {
-    method: 'GET',
-    headers: myHeaders,
-    mode: 'cors',
-    cache: 'default',
-};
-
 const query_url = "http://127.0.0.1:5000/api/v1.0/property_totals";
 
 const property_types = []
