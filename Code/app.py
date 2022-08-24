@@ -230,7 +230,6 @@ def county2021():
 
 @app.route("/api/v1.0/state_data")
 @cross_origin(origin='*')
-
 def state_housing_data():
     # Create our session (link) from Python to the DB
     session = Session(engine)

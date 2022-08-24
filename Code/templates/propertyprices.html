@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>U.S. Housing Data</title>
+    <title>Project 3</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -42,6 +42,8 @@
     <!-- Plotly Libraries -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
+
+
 </head>
 
 <body>
@@ -52,13 +54,13 @@
         <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
             <a href="index.html" class="logo d-flex align-items-center">
                 <!-- Uncomment the line below if you also wish to use an image logo -->
-                <h1>U.S. Housing Data<span>.</span></h1>
+                <h1>Project 3<span>.</span></h1>
             </a>
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#team">Team</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#team">Team</a></li>
                     <li><a href="dataset.html">Dataset</a></li>
                     <li><a href="bubble.html">Bubble Chart</a></li>
                     <li><a href="choropleth.html">Choropleth</a></li>
@@ -87,8 +89,8 @@
                 <div class="container position-relative">
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-6 text-center">
-                            <h2>Chart.js and Plotly Bar Charts</h2>
-                            <p>Showing the amount of homes sold by property type throughout 2019, 2020, and 2021.</p>
+                            <h2>Visualizations</h2>
+                            <!-- <p>This page should have a drop down menu to switch between graphs/charts</p> -->
                         </div>
                     </div>
                 </div>
@@ -105,66 +107,31 @@
         <!-- End Breadcrumbs -->
 
 
-        <!-- =========== property type charts ========== -->
-        <!-- <row>
+        <!-- =========== Geomap ========== -->
+        <row>
             <center>
-                <h4 style="padding-top:20px;">Property Types Sold: 2019 - 2021</h4>
+                <h4 style="padding-top:20px;">Property Types Sold in 2019 - 2021 by State:</h4>
 
                 <!-- The div where we'll insert our chart -->
-        <!-- <div style="padding: 30px;">
-                    <canvas id="property_bar"></canvas>
-                </div>
 
-
-
-                <p></p> -->
-
-        <!-- <p>Hello</p> -->
-
-        <!-- </center>
-        </row> -->
-
-        <div style="padding:20px;">
-            <row>
-                <center>
+                <div class="row">
                     <div class="col-md-12">
-                        <h4 style="padding-top:20px;">Property Types Sold in USA: 2019 - 2021</h4>
+                        <div class="well">
+                            <!-- <h5>State:</h5> -->
+                            <select id="selDataset"></select>
+                        </div>
                     </div>
-
-                    <!-- The div where we'll insert our chart -->
                     <div class="row justify-content-center">
-                        <div class="col-md-10" style="padding: 30px" ;>
-                            <canvas id="property_bar"></canvas>
+                        <div class="col-md-8" style="padding: 30px" ;>
+                            <div id="state_prices_bar"></div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12" style="padding-top: 30px" ;>
-                            <h5 class="panel-title">Property Types Sold in 2019 - 2021 by State:</h5>
-                        </div>
-                    </div>
-                    <row>
-                        <div class="row justify-content-center">
-                            <div class="col-md-12">
-                                <div class="well">
-                                    <!-- <h5>State:</h5> -->
-                                    <select id="selDataset"></select>
-                                </div>
-                            </div>
-                            <div class="col-md-10" style="padding: 30px" ;>
-                                <div id="state_bar"></div>
-                            </div>
-                        </div>
-                    </row>
+                </div>
+            </center>
+        </row>
 
 
-                </center>
-            </row>
-        </div>
-
-
-
-
-        <!-- ========== End of property type charts ========== -->
+        <!-- ========== End of Geomap ========== -->
 
 
     </main>
@@ -188,7 +155,7 @@
                     Dataset by Redfin provided by <a href="https://www.kaggle.com/datasets/thuynyle/redfin-housing-market-data?select=county_market_tracker.tsv000">Kaggle</a>
                 </div>
                 <div class="credits">
-                    Dataset by U.S. Census provided by <a href="https://www.census.gov">U.S. Census Bureau</a>
+                    Dataset by HugeQuiz provided by <a href="https://www.kaggle.com/datasets/darinhawley/us-2021-census-cities-populations-coordinates">Kaggle</a>
                 </div>
                 <div class="credits">
                     <!-- All the links in the footer should remain intact. -->
@@ -216,12 +183,8 @@
 
     <!-- Template Main JS File -->
     <script src="../static/js/main.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <!-- Graphs.js and state_chart.js file link -->
-    <script src="../static/js/graphs.js"></script>
-    <script src="../static/js/state_chart.js"></script>
+    <!-- Graphs.js file link -->
+    <script src="../static/js/propertyprices.js"></script>
 
 </body>
 
