@@ -28,7 +28,7 @@
 
     <!-- Template Main CSS File -->
     <link href="../static/css/main.css" rel="stylesheet">
-   
+
     <!-- =======================================================
   * Template Name: Impact - v1.0.0
   * Template URL: https://bootstrapmade.com/impact-bootstrap-business-website-template/
@@ -40,9 +40,9 @@
     <script src="https://d3js.org/d3.v5.min.js">
     </script>
     <!-- Plotly Libraries -->
-   <!-- <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
-  
+
 
 </head>
 
@@ -66,8 +66,8 @@
                     <li><a href="choropleth.html">Choropleth</a></li>
                     <li class="dropdown"><a href="#"><span>Bar Charts</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                         <ul>
-                          <li><a href="graphs.html">Bar Chart 1</a></li>
-                          <li><a href="chart.html">Bar Chart 2</a></li>
+                            <li><a href="graphs.html">Bar Chart 1</a></li>
+                            <li><a href="chart.html">Bar Chart 2</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -90,7 +90,7 @@
                     <div class="row d-flex justify-content-center">
                         <div class="col-lg-6 text-center">
                             <h2>Visualizations</h2>
-                            <p>This page should have a drop down menu to switch between graphs/charts</p>
+                            <!-- <p>This page should have a drop down menu to switch between graphs/charts</p> -->
                         </div>
                     </div>
                 </div>
@@ -106,19 +106,27 @@
         </div>
         <!-- End Breadcrumbs -->
 
-        
+
         <!-- =========== Geomap ========== -->
         <row>
             <center>
-                <h4 style="padding-top:20px;">Property Types Sold: 2019 - 2021</h4>
+                <h4 style="padding-top:20px;">Property Types Sold in 2019 - 2021 by State:</h4>
 
                 <!-- The div where we'll insert our chart -->
-                <div style="padding: 30px;">
-                    <canvas id="property_bar"></canvas>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="well">
+                            <!-- <h5>State:</h5> -->
+                            <select id="selDataset"></select>
+                        </div>
+                    </div>
+                    <div class="row justify-content-center">
+                        <div class="col-md-8" style="padding: 30px" ;>
+                            <div id="state_bar"></div>
+                        </div>
+                    </div>
                 </div>
-
-
-                <!-- <p>Hello</p> -->
             </center>
         </row>
 
@@ -169,14 +177,14 @@
     <script src="../static/vendor/aos/aos.js"></script>
     <script src="../static/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="../static/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="../static/vendor/swiper/swiper-bundle.min.js"></script> 
+    <script src="../static/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="../static/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="../static/vendor/php-email-form/validate.js"></script>
 
     <!-- Template Main JS File -->
     <script src="../static/js/main.js"></script>
     <!-- Graphs.js file link -->
-    <script src="../static/js/graphs.js"></script>
+    <script src="../static/js/state_chart.js"></script>
 
 </body>
 
