@@ -11,8 +11,6 @@ const myInit = {
 const query_url = "http://127.0.0.1:5000/api/v1.0/property_totals";
 
 const property_types = []
-    // const property_type_2020 = []
-    // const property_type_2021 = []
 const homes_sold_2019 = []
 const homes_sold_2020 = []
 const homes_sold_2021 = []
