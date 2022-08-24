@@ -43,6 +43,7 @@ def index():
         f"/api/v1.0/housing_data_2020<br/>"
         f"/api/v1.0/housing_data_2021<br/>"
         f"/api/v1.0/county_data_deltas<br/>"
+        f"/api/v1.0/state_data<br/>"
         f"/api/v1.0/property_totals"
     )
         #return render_template("index.html")
@@ -95,7 +96,8 @@ def grouped():
         all_housing_data.append(data_dict)
     return jsonify(all_housing_data)
 
-@app.route("/api/v1.0/merged_data", methods=['GET', 'POST'])
+@app.route("/api/v1.0/merged_data")
+# @app.route("/api/v1.0/merged_data", methods=['GET', 'POST'])
 @cross_origin(origin='*')
 def merged():
     # Create our session (link) from Python to the DB
@@ -125,15 +127,15 @@ def merged():
 
         merged_data.append(merged_dict)
 
-        if request.method == 'GET':
-            return jsonify(merged_data)  # serialize and use JSON headers
-        # POST request
-        if request.method == 'POST':
-            print(request.get_json())  # parse as JSON
-            return 'Sucesss', 200
+        # if request.method == 'GET':
+        #     return jsonify(merged_data)  # serialize and use JSON headers
+        # # POST request
+        # if request.method == 'POST':
+        #     print(request.get_json())  # parse as JSON
+        #     return 'Sucesss', 200
 
-    return render_template("test_chart.html", merged_data=merged_data)
-    # return jsonify(merged_data)
+    # return render_template("test_chart.html", merged_data=merged_data)
+    return jsonify(merged_data)
 
 @app.route("/api/v1.0/housing_data_2019")
 @cross_origin(origin='*')
@@ -226,53 +228,36 @@ def county2021():
         housing_data_2021.append(dict2021)
     return jsonify(housing_data_2021)
 
-@app.route("/api/v1.0/state_merged_data", methods=['GET', 'POST'])
+@app.route("/api/v1.0/state_data")
 @cross_origin(origin='*')
 
-def state_merged():
+def state_housing_data():
     # Create our session (link) from Python to the DB
     session = Session(engine)
 
     """Return merged data (For now, All Residential property types only)"""
     # Query all counties
-    results = session.query(County.year, County.state, func.avg(County.inventory), func.sum(County.homes_sold), func.avg(County.median_sale_price), func.avg(County.median_ppsf), func.sum(Pop.pop_estimate_2019), func.sum(Pop.pop_estimate_2020), func.sum(Pop.pop_estimate_2021)).group_by(County.year, County.state).filter(County.property_type == "All Residential").join(Pop, (Pop.state == County.state)).all()
+    results = session.query(County.year, County.state, County.property_type, func.avg(County.inventory), func.sum(County.homes_sold), func.avg(County.median_sale_price), func.avg(County.median_ppsf)).group_by(County.year, County.state, County.property_type).filter(County.property_type != "All Residential").all()
     session.close()
     
     # Create a dictionary from the row data and append to a list of all_data
-    state_merged_data = []
+    state_data = []
 
-    for year, state, inventory, homes_sold, median_sale_price, median_ppsf, pop_estimate_2019, pop_estimate_2020, pop_estimate_2021 in results:
-        state_merged_dict = {}
-        state_merged_dict["year"] = year
-        state_merged_dict["state"] = state
-        state_merged_dict["avg_inventory"] = str(inventory)
-        state_merged_dict["total_homes_sold"] = str(homes_sold)
-        state_merged_dict["avg_median_sale_price"] = str(median_sale_price)
-        state_merged_dict["avg_median_ppsf"] = str(median_ppsf)
-        state_merged_dict["pop_estimate_2019"] = pop_estimate_2019
-        state_merged_dict["pop_estimate_2020"] = pop_estimate_2020
-        state_merged_dict["pop_estimate_2021"] = pop_estimate_2021
+    for year, state, property_type, inventory, homes_sold, median_sale_price, median_ppsf in results:
+        state_dict = {}
+        state_dict["year"] = year
+        state_dict["state"] = state
+        state_dict["property_type"] = property_type
+        state_dict["avg_inventory"] = str(inventory)
+        state_dict["total_homes_sold"] = str(homes_sold)
+        state_dict["avg_median_sale_price"] = str(median_sale_price)
+        state_dict["avg_median_ppsf"] = str(median_ppsf)
 
 
-        state_merged_data.append(state_merged_dict)
-
-    if request.method == 'GET':
-        return jsonify(state_merged_data)  # serialize and use JSON headers
-    # POST request
-    if request.method == 'POST':
-        print(request.get_json())  # parse as JSON
-        return 'Sucesss', 200
-
-    return render_template("test_chart.html", state_merged_data=state_merged_data)
+        state_data.append(state_dict)
 
 
-
-
-
-
-
-
-
+    return jsonify(state_data)
 
 
 
