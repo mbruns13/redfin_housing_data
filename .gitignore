@@ -133,3 +133,4 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+Code/static/js/state_chart.js
