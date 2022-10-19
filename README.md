@@ -22,3 +22,6 @@
 * Dashboard View: using Charts.js, Leaflet, Plotly (filter by state, county)
 * Map View: Leaflet, HeatMap (filter by state, county)
 * Data View: Table with available raw data for users to ingest
+
+## Project Report:
+The slide deck from our presentation can be found [here](https://github.com/mbruns13/redfin_housing_data/blob/main/report_slides.pdf).
