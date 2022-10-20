@@ -25,3 +25,18 @@
 
 ## Project Report:
 The slide deck from our presentation can be found [here](https://github.com/mbruns13/redfin_housing_data/blob/main/report_slides.pdf).
+
+Please see below for screenshots of our site, run locally due to our code's use of pgAdmin.
+![Home Page](https://github.com/mbruns13/redfin_housing_data/blob/main/Code/static/img/screenshots/home_screenshot.png?raw=true)
+
+![About Page](https://github.com/mbruns13/redfin_housing_data/blob/main/Code/static/img/screenshots/about_screenshot.png?raw=true)
+
+![Visualizations Overview](https://github.com/mbruns13/redfin_housing_data/blob/main/Code/static/img/screenshots/viz_overview_screenshot.png?raw=true)
+
+![Choropleth Map](https://github.com/mbruns13/redfin_housing_data/blob/main/Code/static/img/screenshots/choropleth_screenshot.png?raw=true)
+
+![Chart.js Bar Chart](https://github.com/mbruns13/redfin_housing_data/blob/main/Code/static/img/screenshots/chartjs_screenshot.png?raw=true)
+
+![Plotly Bar Chart](https://github.com/mbruns13/redfin_housing_data/blob/main/Code/static/img/screenshots/plotly1_screenshot.png?raw=true)
+
+![Plotly Bar Chart](https://github.com/mbruns13/redfin_housing_data/blob/main/Code/static/img/screenshots/plotly2_screenshot.png?raw=true)
